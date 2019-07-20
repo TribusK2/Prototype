@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="per"></div>
+    <script>
+            function Person(fName, lName, belt) {
+                this.firstName = fName;
+                this.lastName = lName;
+                this.beltColor = belt;
+            };
+            Person.prototype.fullName = function (){
+                return this.firstName+' '+this.lastName;
+            };
+            Person.prototype.beltName = function(){
+                return " posiada "+this.beltColor+" pas";
+            };
+            var Krzys = new Person('Krzysztof', 'Rytlewski', 'czarny');
+            var Magda = new Person('Magdalena', 'Rytlewska', 'czarny');
+            var Borys = new Person('Borysław', 'Rytlewski', 'pomarańczowy');
+            var Jaro = new Person('Jarowit', 'Rytlewski', 'żółty');
+            var Olo = new Person('Olech', 'Rytlewski', 'biały');
+            
+            var persons = [Krzys, Magda, Borys, Jaro, Olo];
+
+
+
+            // Avoid this solution for Arrays!
+            // This solution could add extra things if they was added before.
+            // For Array better is (i=0; i>array.length; i++).
+            for (var x in persons){
+                var id = persons[x].firstName.toLowerCase();
+                var tag = document.createElement('p');
+                tag.setAttribute('id', id);
+                tag.innerHTML = persons[x].fullName()+' '+persons[x].beltName();
+                document.getElementById('per').appendChild(tag);
+            }
+        </script>
+</body>
+</html>

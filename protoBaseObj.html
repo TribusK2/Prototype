@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="per"></div>
+    <script>
+            var person = {
+                firstName: 'Default',
+                lastName: 'Default',
+                beltColor: 'Default',
+                fullName: function (){
+                    return this.firstName+' '+this.lastName;
+                },
+                beltName: function(){
+                    return " posiada "+this.beltColor+" pas";
+                }
+            };
+        
+            var krzys = Object.create(person);
+            krzys.firstName = 'Krzysztof';
+            krzys.lastName = 'Rytlewski';
+            krzys.beltColor = 'czarny';
+            var magda = Object.create(person);
+            magda.firstName = 'Magdalena';
+            magda.lastName = 'Rytlewska';
+            magda.beltColor = 'czarny';
+            var borys = Object.create(person);
+            borys.firstName = 'Borysław';
+            borys.lastName = 'Rytlewski';
+            borys.beltColor = 'pomarańczowy';
+            var jaro = Object.create(person);
+            jaro.firstName = 'Jarowit';
+            jaro.lastName = 'Rytlewski';
+            jaro.beltColor = 'żółty';
+            var olo = Object.create(person);
+            olo.firstName = 'Olech';
+            olo.lastName = 'Rytlewski';
+            olo.beltColor = 'biały';
+            
+            var persons = [krzys, magda, borys, jaro, olo];
+            console.log(persons);
+            for (var x in persons){
+                var id = persons[x].firstName.toLowerCase();
+                var tag = document.createElement('p');
+                tag.setAttribute('id', id);
+                tag.innerHTML = persons[x].fullName()+' '+persons[x].beltName();
+                document.getElementById('per').appendChild(tag);
+            }
+        </script>
+</body>
+</html>
